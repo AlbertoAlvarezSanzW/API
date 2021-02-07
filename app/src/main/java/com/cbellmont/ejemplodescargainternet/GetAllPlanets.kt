@@ -11,12 +11,12 @@ import org.json.JSONObject
 import java.io.IOException
 
 
-class GetAllFilms {
+class GetAllPlanets {
     companion object {
         suspend fun send(mainActivity : MainActivityInterface?) {
 
             val client = OkHttpClient()
-            val url = "https://swapi.dev/api/films/"
+            val url = "https://swapi.dev/api/planets/"
             val request = Request.Builder()
                 .url(url)
                 .build()
@@ -25,7 +25,7 @@ class GetAllFilms {
 
                 override fun onFailure(call: Call, e: IOException) {
                     e.printStackTrace()
-                    Log.e("GetAllFilms", call.toString())
+                    Log.e("GetAllPlanets", call.toString())
 
                 }
 
@@ -33,19 +33,19 @@ class GetAllFilms {
                     CoroutineScope(Dispatchers.IO).launch {
                         val bodyInString = response.body?.string()
                         bodyInString?.let {
-                            Log.w("GetAllFilms", bodyInString)
+                            Log.w("GetAllPlanets", bodyInString)
                             val JsonObject = JSONObject(bodyInString)
 
                             val results = JsonObject.optJSONArray("results")
                             results?.let {
-                                Log.w("GetAllFilms", results.toString())
+                                Log.w("GetAllPlanets", results.toString())
                                 val gson = Gson()
 
-                                val itemType = object : TypeToken<List<Film>>() {}.type
+                                val itemType = object : TypeToken<List<Planet>>() {}.type
 
-                                val list = gson.fromJson<List<Film>>(results.toString(), itemType)
+                                val list = gson.fromJson<List<Planet>>(results.toString(), itemType)
 
-                                mainActivity?.onFilmsReceived(list)
+                                mainActivity?.onPlanetsReceived(list)
                             }
                         }
                     }

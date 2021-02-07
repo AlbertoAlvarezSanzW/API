@@ -7,7 +7,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 
 interface MainActivityInterface {
-    suspend fun onFilmsReceived(listFilms : List<Film>)
+    //suspend fun onFilmssReceived(listFilms: List<Films>)
+    suspend fun onPlanetsReceived(listFilms: List<Planet>)
 }
 
 // IMPORTANT: Passing the activity to a the receiver is not a good practice, it may cause issues
@@ -27,14 +28,14 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
 
 
         CoroutineScope(Dispatchers.IO).launch{
-            GetAllFilms.send(this@MainActivity)
+            GetAllPlanets.send(this@MainActivity)
         }
     }
 
-    override suspend fun onFilmsReceived(listFilms : List<Film>) {
+    override suspend fun onPlanetsReceived(listPlanets:  List<Planet>) {
         withContext(Dispatchers.Main){
             binding.tvFilms.text = ""
-            listFilms.forEach {
+            listPlanets.forEach {
                 tvFilms.append(it.toString())
             }
         }

@@ -6,12 +6,12 @@ data class Zippo (
     @SerializedName("post code")var codigo : String?,
     var country: String,
     @SerializedName("country abbreviation")var code : String?,
-    var climate: String
-    //@SerializedName("places") var placesCampos: List<String>?
-    ){
+    var climate: String){
+
+
 
     override fun toString(): String {
-        return "\nel codigo es: $codigo, con code: $code \n"
+        return "\nLa ciudad es: $country, el codigo es: $codigo y con code: $code \n"
     }
 
 }

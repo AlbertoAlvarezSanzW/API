@@ -38,14 +38,14 @@ class GetAllZippopotamus {
                                 "\n"+"{\"post code\":\"887423\",\"country\":\"Andorra\",\"country abbreviation\":\"DE\"}," +
                                 "\n"+"{\"post code\":\"987425\",\"country\":\"France\",\"country abbreviation\":\"FR\"}," +
                                 "\n"+"{\"post code\":\"000234\",\"country\":\"Russia\",\"country abbreviation\":\"RUS\"}]}"
-                            bodyInString?.let {
-                                Log.w("GetAllZippos", bodyInString)
-                                val JsonObject = JSONObject(bodyInString)
+                        bodyInString?.let {
+                            Log.w("GetAllZippos", bodyInString)
+                            val JsonObject = JSONObject(bodyInString)
 
-                                val results = JsonObject.optJSONArray("results")
-                                results?.let {
-                                    Log.w("GetAllZippos", results.toString())
-                                    val gson = Gson()
+                            val results = JsonObject.optJSONArray("results")
+                            results?.let {
+                                Log.w("GetAllZippos", results.toString())
+                                val gson = Gson()
 
 
                                 val itemType = object : TypeToken<List<Zippo>>() {}.type

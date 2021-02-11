@@ -13,5 +13,5 @@ data class Zippo (
     override fun toString(): String {
         return "\nel codigo es: $codigo, con code: $code \n"
     }
-//hola
+
 }

@@ -28,15 +28,15 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
         setContentView(R.layout.activity_main)
 
 
-        val launch = CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             GetAllZippopotamus.send(this@MainActivity)
         }
     }
     override suspend fun onZippoReceived(listZippo:  List<Zippo>) {
         withContext(Dispatchers.Main){
-            binding.tvFilms.text = ""
+            binding.Zippo.text = ""
             listZippo.forEach {
-                tvFilms.append(it.toString())
+                Zippo.append(it.toString())
             }
         }
 

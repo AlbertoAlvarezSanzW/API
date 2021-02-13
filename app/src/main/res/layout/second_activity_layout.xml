@@ -22,7 +22,7 @@
         android:id="@+id/editText1"
         android:layout_width="222dp"
         android:layout_height="48dp"
-        android:text="TextView"
+        android:text="Introduzca un codigo: "
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

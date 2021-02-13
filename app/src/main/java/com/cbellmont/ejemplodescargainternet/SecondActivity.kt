@@ -19,7 +19,7 @@ class SecondActivity : AppCompatActivity() {
         val editTexto = findViewById<EditText>(R.id.editText1)
         boton.setOnClickListener {
             if(editTexto.text.toString().isEmpty()){
-                //MEter la vaina de que si no hay nada le diga que es negro y que ponga algo el hp
+
             }else{
                 val intent = Intent()
                 intent.putExtra(MainActivity.ejemplo,editTexto.text.toString())

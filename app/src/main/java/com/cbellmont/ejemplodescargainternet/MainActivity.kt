@@ -29,12 +29,11 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setContentView(R.layout.activity_main)
         CoroutineScope(Dispatchers.IO).launch {
             GetAllZippopotamus.send(this@MainActivity)
         }
-        val boton = findViewById<Button>(R.id.button)
-        boton.setOnClickListener{
+
+        binding.button.setOnClickListener{
             val intent = Intent(this,SecondActivity::class.java)
             startActivityForResult(intent,OBJETOSECOND)
         }

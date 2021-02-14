@@ -13,7 +13,7 @@ import java.io.IOException
 
 class GetOneZippo {
     companion object {
-        suspend fun send(mainActivity : MainActivityInterface?) {
+        suspend fun send2(mainActivity : MainActivityInterface?) {
 
             val client = OkHttpClient()
             val url = "https://api.zippopotam.us/"
@@ -26,22 +26,22 @@ class GetOneZippo {
                 override fun onFailure(call: Call, e: IOException) {
                     e.printStackTrace()
                     Log.e("GetOneZippo", call.toString())
-
                 }
 
                 override fun onResponse(call: Call, response: Response) {
                     CoroutineScope(Dispatchers.IO).launch {
-                        //val bodyInString = response.body?.string()
-                        val bodyInString = "{\"results\": [{\"post code\":\"90210\",\"country\":\"United States\",\"country abbreviation\":\"US\"}]}"
+                        val bodyInString = "{\"results\": [{\"post code\":\"28003\",\"country\":\"Spain\",\"country abbreviation\":\"ES\"}]}"
                         bodyInString?.let {
                             Log.w("GetOneZippo", bodyInString)
                             val JsonObject = JSONObject(bodyInString)
 
                             val results = JsonObject.optJSONArray("results")
+
+                            Log.w("GetOneZippo", results.toString())
+
                             results?.let {
                                 Log.w("GetOneZippo", results.toString())
                                 val gson = Gson()
-
 
                                 val itemType = object : TypeToken<List<Zippo>>() {}.type
 

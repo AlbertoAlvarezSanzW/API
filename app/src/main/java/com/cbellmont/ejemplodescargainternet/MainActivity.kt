@@ -3,6 +3,7 @@ package com.cbellmont.ejemplodescargainternet
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cbellmont.ejemplodescargainternet.databinding.ActivityMainBinding
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.e("MAINACTIVITY","El onCreate funciona")
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
@@ -43,11 +45,12 @@ class MainActivity : AppCompatActivity(), MainActivityInterface {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == OBJETOSECOND && resultCode == RESULT_OK){
+            Log.e("MAINACTIVITY","El Result funciona")
             data?.let {
                 var respuesta= it.getStringExtra(ejemplo)
                 respuesta?.let {
                     CoroutineScope(Dispatchers.IO).launch {
-                        GetAllZippopotamus.send(this@MainActivity)
+                        GetOneZippo.send2(this@MainActivity)
                     }
                 }
             }

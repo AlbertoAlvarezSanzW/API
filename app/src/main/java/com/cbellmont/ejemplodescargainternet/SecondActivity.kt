@@ -23,7 +23,7 @@ class SecondActivity : AppCompatActivity() {
             }else{
                 val intent = Intent()
                 intent.putExtra(MainActivity.ejemplo,editTexto.text.toString())
-                setResult(OBJETOSECOND,intent)
+                setResult(RESULT_OK,intent)
                 finish()
             }
         }

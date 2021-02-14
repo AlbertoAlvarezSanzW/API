@@ -31,7 +31,6 @@ class GetAllZippopotamus {
 
                 override fun onResponse(call: Call, response: Response) {
                     CoroutineScope(Dispatchers.IO).launch {
-                        //val bodyInString = response.body?.string()
                         val bodyInString = "{\"results\": [{\"post code\":\"90210\",\"country\":\"United States\",\"country abbreviation\":\"US\"}," +
                                 "\n"+"{\"post code\":\"28003\",\"country\":\"Spain\",\"country abbreviation\":\"ES\"}," +
                                 "\n"+"{\"post code\":\"85153\",\"country\":\"Germany\",\"country abbreviation\":\"DE\"}," +
